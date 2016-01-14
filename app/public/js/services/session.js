@@ -2,20 +2,29 @@ angular.module('esame')
 .service("Session", function(){
 
 	this.logged = null;
+	this.data = {
+		auth: {
+			accessToken: '',
+			signedRequest: '',
+			expiresIn: '',
+		}
+	};
 	
-	this.create = function(user) {
+	this.init = function(resp) {
 		this.logged = true;
-		this.username = user.name;
-		this.userid = user.id;		
+		this.data.auth.accessToken = resp.authResponse.accessToken;
+		this.data.auth.signedRequest = resp.authResponse.signedRequest;
+		this.data.auth.expiresIn = resp.authResponse.signedRequest;
+		this.data.auth.userid = resp.authResponse.userid;
 	};
 
 	this.destroy = function() {
-		this.username = null;
-		this.userid = null;
-	};
-
-	this.getUser = function() {
-		if(this.logged)
-			return{username: this.username, userid: this.userid};
+		this.data = {
+			auth: {
+				accessToken: '',
+				signedRequest: '',
+				expiresIn: '',
+			}			
+		};
 	};
 });

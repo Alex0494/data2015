@@ -2,12 +2,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2>WELCOME {{user.username}}!!!</h2>				
+				<h2>WELCOME {{user.name}}!!!</h2>				
 			</div>				
 		</div>
 		<br>
 		<div class="row">
 					
 		</div>
+	</div>
+</section>
+ 
+<section id="pictures">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">				
+				<ul ng-repeat="picture in pictures">
+					<li>{{picture}}</li>
+				</ul>
+			</div>
+		</div>		
 	</div>
 </section>

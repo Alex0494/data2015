@@ -2,21 +2,26 @@ angular.module('esame')
 .controller('loginCtrl', ['$scope', '$http','$facebook','$location','Session', function($scope, $http, $facebook, $location,Session){
 
 	$scope.login = function() {
-		$facebook.login().then(function() {				
-			refresh();
+		$facebook.login().then(function(resp) {
+			if(resp.status === "connected") {
+				Session.init(resp);
+				$location.path('/home');
+			} else {
+				$scope.error = "There was an error connecting to your facebook account";
+			}			
+		}, function(error){
+			console.log(error)
+			alert("An error occurred contacting the server");
+			$location.path('/login');
 		});
 	};
 
-	function refresh() {
-		$facebook.api("/me").then( 
-			function(user) {
-				Session.create(user);	
-				$location.path('/home');			      			
-			},
-			function(err) {
-				//$scope.welcomeMsg = "Please log in";
-			});
-	};
+	$scope.logout = function() {
+		$facebook.logout().then(function(){
+			Session.destroy();
+			$location.path('/login');
+		});
+	};	
 	
 }]);
 

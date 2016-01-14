@@ -3,7 +3,7 @@ angular.module('esame', ['ngRoute', 'ngFacebook'])
 	$facebookProvider.setAppId('718213938280904');
 })
 .run(function($rootScope){
-	 (function(){     
+	(function(){     
      if (document.getElementById('facebook-jssdk')) {return;}
      // Get the first script element, which we'll use to find the parent node
      var firstScriptElement = document.getElementsByTagName('script')[0];
@@ -14,6 +14,6 @@ angular.module('esame', ['ngRoute', 'ngFacebook'])
      facebookJS.src = '//connect.facebook.net/en_US/all.js';
      // Insert the Facebook JS SDK into the DOM
      firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
-   }());
+}());
 });
 
