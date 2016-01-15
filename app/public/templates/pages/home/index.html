@@ -1,25 +1,39 @@
-<section id="welcome">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h2>WELCOME {{user.name}}!!!</h2>				
-			</div>				
-		</div>
-		<br>
-		<div class="row">
-					
-		</div>
-	</div>
-</section>
- 
-<section id="pictures">
+<section id="portfolio">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">				
-				<ul ng-repeat="picture in pictures">
-					<li>{{picture}}</li>
-				</ul>
+				<img class="img-circle" ng-src="{{user.picture.data.url}}">		
 			</div>
-		</div>		
+			<div class="col-lg-12 text-center">
+				<h3 class="normal">Welcome {{user.name.split(" ")[0]}}</h3>
+			</div>		
+		</div>
+	</div>
+
+
+	<hr class="star-primary">
+
+	<!-- Portfolio Grid Section -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h3 class="normal">These are your last 30 pictures</h3>                    
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4 portfolio-item" ng-repeat="picture in pictures">
+				<a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+					<div class="caption">
+						<div class="caption-content">
+							<i class="fa fa-search-plus fa-3x"></i>
+						</div>
+					</div>
+					<img ng-src="{{picture.url}}" class="img-responsive" alt="">
+				</a>
+			</div>               
+		</div>
 	</div>
 </section>
+
+
