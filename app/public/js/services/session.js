@@ -7,6 +7,7 @@ angular.module('esame')
 			accessToken: '',
 			signedRequest: '',
 			expiresIn: '',
+			userid: ''
 		}
 	};
 	
@@ -14,8 +15,8 @@ angular.module('esame')
 		this.logged = true;
 		this.data.auth.accessToken = resp.authResponse.accessToken;
 		this.data.auth.signedRequest = resp.authResponse.signedRequest;
-		this.data.auth.expiresIn = resp.authResponse.signedRequest;
-		this.data.auth.userid = resp.authResponse.userid;
+		this.data.auth.expiresIn = resp.authResponse.signedRequest;		
+		this.data.auth.userid = resp.authResponse.userID;
 	};
 
 	this.destroy = function() {
@@ -24,6 +25,7 @@ angular.module('esame')
 				accessToken: '',
 				signedRequest: '',
 				expiresIn: '',
+				userid: ''
 			}			
 		};
 	};

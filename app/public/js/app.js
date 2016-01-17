@@ -1,6 +1,6 @@
 angular.module('esame', ['ngRoute', 'ngFacebook'])
 .config(function($facebookProvider) {
-	$facebookProvider.setAppId('718213938280904');
+	$facebookProvider.setAppId('718213938280904'); 
 })
 .run(function($rootScope){
 	(function(){     
