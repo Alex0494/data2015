@@ -2,17 +2,20 @@ angular.module('esame')
 .config(['$routeProvider', function($routeProvider) {
 
 	$routeProvider.when('/', {
-		redirectTo: '/login'
+		redirectTo: '/landing'
 	});
 
-	$routeProvider.when('/login', {
+	$routeProvider.when('/landing', {
 		templateUrl: '/templates/pages/login/index.html',
 		controller: 'loginCtrl'
 	});
 
 	$routeProvider.when('/home', {
 		templateUrl: '/templates/pages/home/index.html',
-		controller: 'AppCtrl'
+		controller: 'AppCtrl',
+		access: {
+			requiresLogin: true
+		}
 	});
 
 }]);

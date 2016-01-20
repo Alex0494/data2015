@@ -22,7 +22,7 @@
 					<img height="50px" width="50px" ng-src="{{user.picture.data.url}}">
 				</li>				
 				<li>
-					<button class="btn" ng-click="logout()">Logout</button>
+					<button class="btn btn-primary" ng-click="logout()">Logout</button>
 				</li>					
 			</ul>
 		</div>
@@ -41,7 +41,7 @@
 				<img class="img-circle" ng-src="{{user.picture.data.url}}">		
 			</div>
 			<div class="col-lg-12 text-center">
-				<h3 class="normal">Welcome {{user.name.split(" ")[0]}}</h3>
+				<h2 class="normal">Welcome {{user.name.split(" ")[0]}}</h2>
 			</div>		
 		</div>
 	</div>
@@ -51,28 +51,50 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">				
-				<h3 class="normal">The last 30 pictures you Uploaded</h3>
+				<h2 class="normal">The last 30 pictures you Uploaded</h2>
 			</div>
-			<span class="col-lg-4 text-center" ng-repeat="picture in pictures">
-				<img ng-src="{{picture.images[0].source}}">
-			</span>
+			<span class="col-lg-2 text-center" ng-repeat="picture in pictures">
+				<a ng-href="{{picture.images[0].source}}"><img height="206" width="206" ng-src="{{picture.images[0].source}}"></a>
+			</s>
 		</div>
 	</div>
 </section>
 
 <section>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12 text-center">
-			<h3>Geolocalized Pictures you were Tagged in</h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="normal">Geolocalized Pictures you were Tagged in</h2>
+				<span class="col-lg-4 text-center" ng-repeat="picture in geoPictures | limitTo: 5">
+					<a ng-href="{{picture.images[0].source}}"><img height="206px" width="206px" ng-src="{{picture.images[0].source}}"></a>				
+				</span>
+
+			</div>
 		</div>
-		<ul>
-			<li ng-repeat="picture in geoPictures | limitTo: 5">
-				<img ng-src="{{picture.images[0].source}}">				
-			</li>
-		</ul>
+	</section>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center"><h2 class="normal">Your Pictures on Gmaps</h2></div>					
+			</div>
+			<span ng-if="map !== undefined && markers.length == geoPictures.length">
+				<ui-gmap-google-map center='map.center' zoom='map.zoom'>				
+				<ui-gmap-markers models="markers" coords="'coords'"></ui-gmap-markers>
+			</ui-gmap-google-map>
+		</span>			
 	</div>
-</div>
 </section>
 
-
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center"><h2 class="normal">Your Pictures as Position Markers</h2></div>			
+		</div>
+		<span ng-if="map !== undefined && markers.length == geoPictures.length">
+			<ui-gmap-google-map center='map.center' zoom='map.zoom'>				
+			<ui-gmap-markers models="markers" coords="'coords'" icon="'icon'"></ui-gmap-markers>
+		</ui-gmap-google-map>
+	</span>		
+</div>
+</section>

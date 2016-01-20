@@ -1,6 +1,14 @@
-angular.module('esame', ['ngRoute', 'ngFacebook'])
+angular.module('esame', ['ngRoute', 'ngFacebook', 'uiGmapgoogle-maps', 'ngCookies'])
 .config(function($facebookProvider) {
 	$facebookProvider.setAppId('718213938280904'); 
+})
+
+.config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyAdaP3JeDl9ySD6xfP04SHad_cjQfsf_VA',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
+    });
 })
 .run(function($rootScope){
 	(function(){     
