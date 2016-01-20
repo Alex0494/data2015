@@ -38,7 +38,7 @@ angular.module('esame')
 				$scope.user = resp;				
 			});
 			//init uploaded pictures
-			$facebook.api('me/photos?type=uploaded&fields=from,album,images,picture,place&limit=30').then(function(resp){
+			$facebook.api('me/photos?type=uploaded&fields=name,from,album,images,picture,place&limit=30').then(function(resp){
 				if(resp) {				
 					$scope.pictures = resp.data;									
 				}else{
@@ -46,14 +46,15 @@ angular.module('esame')
 				}
 			});
 			//init geo pictures
-			$facebook.api('me/photos?fields=from,album,images,picture,place&limit=30').then(function(resp){
+			$facebook.api('me/photos?fields=name,from,album,images,picture,place&limit=30').then(function(resp){
 				if(resp) {					
 					for(i in resp.data) {						
 						if(resp.data[i].place) {
 							$scope.geoPictures.push(resp.data[i]);							
 						}						
 					};					
-					//init map						
+					//init map	
+					console.log($scope.pictures);					
 					$scope.initMap();						
 				}else{
 					console.log("error");				
