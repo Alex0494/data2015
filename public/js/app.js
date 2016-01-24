@@ -1,6 +1,7 @@
 angular.module('esame', ['ngRoute', 'ngFacebook', 'uiGmapgoogle-maps', 'ngCookies'])
 .config(function($facebookProvider) {
 	$facebookProvider.setAppId('718213938280904'); 
+    $facebookProvider.setPermissions("user_location, user_photos, user_tagged_places");
 })
 
 .config(function(uiGmapGoogleMapApiProvider) {
