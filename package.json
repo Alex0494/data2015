@@ -1,0 +1,13 @@
+{
+  "name": "esameBigData",
+  "main": "server.js",
+  "dependencies": {
+    "express": "latest",
+    "facebook-node-sdk": "^0.2.0",
+    "node-restful": "latest",
+    "pg": "^4.4.3"
+  },
+  "engines": {
+  	"node": "4.2.6"
+  }
+}
